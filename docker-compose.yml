@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  geth-sepolia:
+    image: ethereum/client-go:stable
+    command:
+      [
+        "--sepolia",
+        "--http",
+        "--http.addr=0.0.0.0",
+        "--http.port=8545",
+        "--http.api=eth,net,web3",
+        "--metrics",
+        "--metrics.addr=0.0.0.0",
+        "--metrics.port=6060",
+        "--verbosity=3"
+      ]
+    ports:
+      - "8545:8545"
+      - "6060:6060"
+    restart: on-failure
